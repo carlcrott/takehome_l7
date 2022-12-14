@@ -7,7 +7,7 @@ import requests
 import time
 import pika
 import logging
-
+import proto_csv
 
 app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)
@@ -42,6 +42,24 @@ def upload():
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
    if request.method == 'POST':
-      f = request.files['file']
-      f.save(secure_filename(f.filename))
-      return 'file uploaded successfully'
+        f = request.files['file']
+        f.save(secure_filename(f.filename))
+
+        # proto_csv.parse(f.filename)
+
+        # asdf = open('census_2009b.csv','r')
+        # asdf = open(f.filename,'r')
+        output_json = proto_csv.parse(f.filename)
+
+        # output_json
+
+        # Do we delete here? IDK. 
+        # What happens re-uploads / overwriting?
+        return 'file uploaded successfully'
+
+
+
+# if __name__ == '__main__':
+#    app.run(debug = True)
+
+

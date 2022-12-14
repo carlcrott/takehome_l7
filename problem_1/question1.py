@@ -14,10 +14,9 @@ http://10.0.0.25:8000/hello
 
 ## local run
 export FLASK_APP=app.py
+flask run
 
 https://pythonbasics.org/flask-upload-file/
-
-
 werkzeug
 
 
@@ -49,6 +48,8 @@ First off we should dump any errors -- so if were ingesting something that fails
 We should test one of the columns to see if it matches against a known-true solution: EX: States explitic, and State abbreviated.
 
 Im not exactly sure what this data in these columns should be....
+
+lol OK the csv file is malformed.
 
 
 """
