@@ -2,10 +2,33 @@
 
 
 """
+nokogiri@nokogiri:~/l7_homework/takehome$
 
 
 docker build . 
-ddocker compose up
+docker compose up
+
+127.0.0.1:8000/hello
+http://10.0.0.25:8000/hello
+
+
+## local run
+export FLASK_APP=app.py
+
+https://pythonbasics.org/flask-upload-file/
+
+
+werkzeug
+
+
+psuedocode:
+HTML accepts file 
+were not going to do any validating. Only throwing errors if not perfect. Writing to log.
+ingest / split file 
+find column of interest
+build into some format 
+spit data back to frontend JS 
+populate charts with highcharts
 
 
 
@@ -19,15 +42,14 @@ ddocker compose up
 
 So we need to sort out which columns which might be which.
 
-How complex is the total solution space?
-
-This could literally be endlessly complex.
+How complex is the total solution space? If theres no structures to the files -- we start in the extremes.
 
 First off we should dump any errors -- so if were ingesting something that fails, well we have an example of WHAT failure happened.
 
-We should test one of the columsn to see if it matches against a known-true solution: EX: States explitic, and State abbreviated.
+We should test one of the columns to see if it matches against a known-true solution: EX: States explitic, and State abbreviated.
 
-Im not exactly sure what this data should be.
+Im not exactly sure what this data in these columns should be....
+
 
 """
 
