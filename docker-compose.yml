@@ -1,0 +1,12 @@
+version: '1'
+services:
+
+    web:
+        build: .
+        command: gunicorn --access-logfile app_access.log --log-level debug -b 0.0.0.0:8000 -w 1 app:app
+        ports:
+            - 8000:8000
+        volumes:
+            - .:/code
+        networks:
+            - backend
