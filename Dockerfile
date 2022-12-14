@@ -12,7 +12,6 @@ RUN pip install -r requirements.txt
 RUN pip3 install gunicorn
 
 COPY app.py .
-COPY shitlog.log .
 
 ADD . /code
 WORKDIR /code
