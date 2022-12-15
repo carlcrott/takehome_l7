@@ -37,7 +37,7 @@ def hello():
 def upload():
     if request.method == 'GET':
         return render_template('index.html')
-        
+
     else:
         f = request.files['file']
         f.save(secure_filename(f.filename))
@@ -46,13 +46,15 @@ def upload():
 
         # asdf = open('census_2009b.csv','r')
         # asdf = open(f.filename,'r')
-        output_json = proto_csv.parse(f.filename)
+        states, data = proto_csv.parse(f.filename)
 
-        # output_json
+        print(states)
+        print("############")
+        print(data)
 
         # Do we delete here? IDK. 
         # What happens re-uploads / overwriting?
-        return render_template('index.html', value=output_json)
+        return render_template('index.html', value=[states, data])
 
 
 
