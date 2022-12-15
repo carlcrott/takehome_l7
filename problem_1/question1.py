@@ -70,6 +70,12 @@ So the drill down column is perfect.
 https://www.highcharts.com/demo/column-drilldown
 https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/column-drilldown
 
+## this might be a better way to present it...
+https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bar-stacked
+
+
+http://jsfiddle.net/pawel_dalek/oLme65xs/
+
 
 
 
@@ -99,6 +105,21 @@ OK so we need TWO sets of data.
 ]
 
 
+
+so then top_level_data is a list of dicts 
+
+where EXAMPLE dict: 
+    {
+        name: 'Chrome',
+        y: 63.06,
+        drilldown: 'Chrome'
+    }
+where OUR dict: 
+    {
+        name: 'Alabama',
+        y: 63.06,
+        drilldown: 'Alabama'
+    }
 
 
 
