@@ -44,12 +44,19 @@ def parse(filename):
     Alabama Adamsville  4782    3   11  7.83099
     """
 
-    ## Not generalized -- get it working first. Then genralize.
-    df = pd.read_csv(filename, sep='\t')
-    df = pd.read_csv(filename)
-    df[["State", "Town", "7_2009"]]
+    ## preprocessing Im just throwing out anything thats not 6 column.
+    preprocessed_data = []
+    census_raw = open(filename,'r')
+    reader = csv.reader(census_raw, delimiter='\t')
 
-    output = df[["State", "Town", "7_2009"]].to_dict()
+    for row in reader:
+        if len(row) == 6:
+            preprocessed_data.append(row)
+
+    df = pd.DataFrame(preprocessed_data)
+    df.columns = df.iloc[0]
+    df = df.drop(df.index[0])
+    # df[["State", "Town", "7_2009"]]
 
 
     state_indexed = {}
@@ -57,16 +64,13 @@ def parse(filename):
     # Alabama Adamsville  4782    3   11  7.83099
     # state_indexed['Alabama'][town] = population
 
-    # df[["State", "Town", "7_2009"]]
 
-    list_of_states = [] # obviously this isnt generalized
+    list_of_states = []
     benfords_densities = {}
 
     ## ~~~~ NON ALGORITHMICALLY OPTIMIZED ~~~~
     # I do not care.  
     # Prototyping > Performance
-    # I want clarity to make my mental compute simpler
-    # So were iterating over this and building the lists individually.
     malformed_count = 0
 
     for index, row in df[["State", "Town", "7_2009"]].iterrows():
@@ -91,10 +95,10 @@ def parse(filename):
 
 parse(filename)
 
-
-benfords_densities['Alabama']
-benfords_densities['Texas']
-benfords_densities['Wyoming']
+## quick sanity check
+# benfords_densities['Alabama']
+# benfords_densities['Texas']
+# benfords_densities['Wyoming']
 
 
 
