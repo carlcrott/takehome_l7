@@ -31,6 +31,10 @@ populate charts with highcharts
 
 
 
+https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/column-rotated-labels
+
+
+
 """
 
 
