@@ -34,10 +34,6 @@ def state_build(state, data):
     return temp
 
 
-for state in list_of_states:
-        benfords_densities[state] = state_build(state, preprocessed_data)
-
-
 def map_state_to_integer_index(benfords_densities, list_of_states):
     ## Finally we need to rotate the data into the final format expected by highcharts.
     # Top level list -- will be 9 items long, corresponding to integers 1-9 and 0
@@ -119,6 +115,7 @@ def parse(filename):
     
 
     list_of_states = []
+
     benfords_densities = {}
     malformed_count = 0
     ## ~~~~ NON ALGORITHMICALLY OPTIMIZED ~~~~

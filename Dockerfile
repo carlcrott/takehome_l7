@@ -5,10 +5,10 @@ WORKDIR /code
 
 COPY . .
 
-COPY app.py .
+COPY service.py .
 
 RUN pip install -r requirements.txt
 
 RUN pip3 install gunicorn
 
-ENV FLASK_APP app.py 
+ENV FLASK_APP service.py 
