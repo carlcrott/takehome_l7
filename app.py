@@ -32,13 +32,13 @@ def hello():
     return "Hello CHEESE!"
 
 
+@app.route("/")
+def index():
+    return render_template('index.html')
 
-@app.route("/upload", methods = ['GET', 'POST'])
-def upload():
-    if request.method == 'GET':
-        return render_template('index.html')
 
-    else:
+@app.route("/uploader", methods = ['POST'])
+def uploader():
         f = request.files['file']
         f.save(secure_filename(f.filename))
 
@@ -52,9 +52,16 @@ def upload():
         print("############")
         print(data)
 
+        output_json = {}
+        output_json['states'] = states
+        output_json['data'] = data
+
+        # output_json
+
+
         # Do we delete here? IDK. 
         # What happens re-uploads / overwriting?
-        return render_template('index.html', value=[states, data])
+        return render_template('index.html', states=states, data=json.dumps(data))
 
 
 

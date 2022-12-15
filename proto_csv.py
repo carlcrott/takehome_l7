@@ -2,6 +2,8 @@ import pandas as pd
 import json
 import csv
 
+DEBUG = False
+
 
 def state_build(state, df):
     """
@@ -15,14 +17,19 @@ def state_build(state, df):
 
     print("############# "+ state)
 
-    for index, row in df[["State", "Town", "7_2009"]].iterrows():
+    row_iter = 0
 
+    for index, row in df[["State", "Town", "7_2009"]].iterrows():
         if row['State'] == state:
             popped_leading_int = str(row['7_2009'])[0]
             # print(popped_leading_int)
             # Increment the count for whatever the popped lead is
             temp[popped_leading_int] += 1
 
+        if DEBUG:
+            row_iter +=1
+            if row_iter >= 50:
+                return temp
 
     # print (temp)
     return temp

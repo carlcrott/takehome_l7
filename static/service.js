@@ -31,16 +31,7 @@ $(document).ready(function(){
     */
 
 
-
-
-
-
-    if ( $('#data_output').html().trim() != "" ) {
-        // alert("DATA FILLED");
-    } else {
-        // alert("EMPTY");
-    };
-
+    
 
 // Data retrieved from https://gs.statcounter.com/browser-market-share#monthly-202201-202201-bar
 
@@ -85,54 +76,60 @@ $(document).ready(function(){
 
 ///////////////////////////////////////////////////////////////
 
-// // IMPLEMENTATION VERSION
-// MODELED AFTER: http://jsfiddle.net/pawel_dalek/oLme65xs/
 
-// Highcharts.chart('container', {
-//     chart: {
-//         type: 'bar'
-//     },
-//     title: {
-//         text: 'Benfords Law'
-//     },
-//     xAxis: {
-//         categories: ['Alabama', 'Texas', 'Wyoming']
-//     },
-//     yAxis: {
-//         min: 0,
-//         title: {
-//             text: 'First number of population'
-//         }
-//     },
-//     tooltip: {
-//         pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-//         shared: true
-//     },
-//     plotOptions: {
-//         bar: {
-//             stacking: 'percent'
-//         }
-//     },
 
-/* 
-TOP LEVEL LIST will be 10 items long ... 1,2,3,4,5,6,7,8,9,0
 
-THE INDIVIDUAL dicts in this series 
-... will each be 50 items long and be Alabama through Wyoming
-... and there will be 9 series of data.
-*/
 
-//     series: [{
-//         name: 'Integer 1',
-//         data: [4, 4, 2, 4, 4]
-//     }, {
-//         name: 'Integer 2',
-//         data: [0, 4, 3, 2, 3]
-//     }, {
-//         name: 'Integer 3',
-//         data: [1, 2, 2, 1, 2]
-//     }]
-// });
+
+    if ( $('#data_output').html().trim() != "" ) {
+        // alert("DATA FILLED");
+        var states = $('#states_output').html().trim().split(",")
+        var data = JSON.parse(String($('#data_output').html().trim()));
+
+
+        // // IMPLEMENTATION VERSION
+        // MODELED AFTER: http://jsfiddle.net/pawel_dalek/oLme65xs/
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'bar',
+                height: '85%',
+            },
+            title: {
+                text: 'Benfords Law'
+            },
+            xAxis: {
+                categories: states
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'First number of population'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    stacking: 'percent'
+                }
+            },
+            series: data
+        });
+
+
+
+
+
+    } else {
+        // alert("EMPTY");
+    };
+
+
+
+
 
 
 
