@@ -37,6 +37,7 @@ def hello():
 def upload():
     if request.method == 'GET':
         return render_template('index.html')
+        
     else:
         f = request.files['file']
         f.save(secure_filename(f.filename))

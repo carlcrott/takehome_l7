@@ -74,10 +74,13 @@ https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/sampl
 https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bar-stacked
 
 
-http://jsfiddle.net/pawel_dalek/oLme65xs/
+
+## this is the final one...
+https://jsfiddle.net/2gezm1jk/
 
 
-
+We have MALFORMED data... so I need to check that the total number of columns per row is correct.
+Instead bc we only have 2 rows im just manually correcting the data.
 
 
 """
