@@ -1,18 +1,14 @@
 FROM python:3.8
 
-COPY requirements.txt .
 
-# ENV VIRTUAL_ENV=/opt/venv
-# RUN python3 -m venv $VIRTUAL_ENV && 
-# ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+WORKDIR /code
 
-RUN pip install -r requirements.txt
-
-# Simplifies the path issue.
-RUN pip3 install gunicorn
+COPY . .
 
 COPY app.py .
 
-ADD . /code
-WORKDIR /code
-COPY . .
+RUN pip install -r requirements.txt
+
+RUN pip3 install gunicorn
+
+ENV FLASK_APP app.py 

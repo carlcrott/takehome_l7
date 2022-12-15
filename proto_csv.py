@@ -1,11 +1,9 @@
-import pandas as pd
 import json
 import csv
 
 DEBUG = False
 
-
-def state_build(state, df):
+def state_build(state, data):
     """
     DESIRED OUTPUT will be
     benfords_densities['Alabama'] = [100, 30, 24, 20, 15, 12, 10, 9, 7, 6]
@@ -19,9 +17,10 @@ def state_build(state, df):
 
     row_iter = 0
 
-    for index, row in df[["State", "Town", "7_2009"]].iterrows():
-        if row['State'] == state:
-            popped_leading_int = str(row['7_2009'])[0]
+    # ['Alabama', 'Abbeville ', '2930', '3', '10', '3.94383']
+    for row in data:
+        if row[0] == state:
+            popped_leading_int = str(row[2])[0]
             # print(popped_leading_int)
             # Increment the count for whatever the popped lead is
             temp[popped_leading_int] += 1
@@ -34,6 +33,9 @@ def state_build(state, df):
     # print (temp)
     return temp
 
+
+for state in list_of_states:
+        benfords_densities[state] = state_build(state, preprocessed_data)
 
 
 def map_state_to_integer_index(benfords_densities, list_of_states):
@@ -92,6 +94,9 @@ def map_state_to_integer_index(benfords_densities, list_of_states):
 
 
 
+
+
+
 def parse(filename):
     """
     Example valid data:
@@ -110,31 +115,19 @@ def parse(filename):
         if len(row) == 6:
             preprocessed_data.append(row)
 
-    df = pd.DataFrame(preprocessed_data)
-    df.columns = df.iloc[0]
-    df = df.drop(df.index[0])
-    # df[["State", "Town", "7_2009"]]
-
-    # Alabama Abbeville   2930    3   10  3.94383
-    # Alabama Adamsville  4782    3   11  7.83099
-
+    data_cols = preprocessed_data.pop(0)
+    
 
     list_of_states = []
     benfords_densities = {}
-
-    ## ~~~~ NON ALGORITHMICALLY OPTIMIZED ~~~~
-    # I do not care.  
-    # Prototyping > Performance
     malformed_count = 0
-
-    for index, row in df[["State", "Town", "7_2009"]].iterrows():
-        # Build the list of states
-        row = list(row)
+    ## ~~~~ NON ALGORITHMICALLY OPTIMIZED ~~~~
+    # Prototyping > Performance
+    for row in preprocessed_data:
+        print(row)
 
         ## If its malformed, ignore it.
-        if len(row) != 3:
-            print("MALFORMED:")
-            print(row)
+        if len(row) != 6:
             malformed_count += 1
             continue
 
@@ -142,7 +135,7 @@ def parse(filename):
             list_of_states.append(row[0])
 
     for state in list_of_states:
-        benfords_densities[state] = state_build(state, df)
+        benfords_densities[state] = state_build(state, preprocessed_data)
 
 
     highcharts_ingest_data = map_state_to_integer_index(benfords_densities, list_of_states)
