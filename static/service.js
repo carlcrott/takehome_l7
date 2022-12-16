@@ -8,7 +8,9 @@ $(document).ready(function(){
 
     if ( $('#data_output').html().trim() != "" ) {
         // alert("DATA FILLED");
-        var states = $('#states_output').html().trim().split(",")
+        var asdf = $('#states_output').html().trim();
+        var states = asdf.substring(1, asdf.length-1).split(",");
+
         var data = JSON.parse(String($('#data_output').html().trim()));
 
 
@@ -21,6 +23,9 @@ $(document).ready(function(){
             },
             title: {
                 text: 'Benfords Law'
+            },
+            subtitle: {
+                text: 'In 1938, Frank Benford published a paper showing the distribution of the leading digit in many disparate sources of data. \n In all these sets of data, the number 1 was the leading digit about 30% of the time.'
             },
             xAxis: {
                 categories: states

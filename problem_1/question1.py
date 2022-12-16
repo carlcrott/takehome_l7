@@ -13,8 +13,8 @@ http://10.0.0.25:8000/hello
 
 
 ## local run
-export FLASK_APP=app.py
-flask run
+export FLASK_APP=service.py
+flask run -p 8000
 
 https://pythonbasics.org/flask-upload-file/
 werkzeug

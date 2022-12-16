@@ -35,34 +35,25 @@ def state_build(state, data):
 
 
 def map_state_to_integer_index(benfords_densities, list_of_states):
-    ## Finally we need to rotate the data into the final format expected by highcharts.
-    # Top level list -- will be 9 items long, corresponding to integers 1-9 and 0
-    # within each theyll have a dict:
-    # {name: 'Integer 1', data: [4, 4, 2, 4, 4, ... ]}, 
-    # which is FIFTY items long
-    # Ordered from Alabama to Wyoming
-    # 'Wisconsin': {'1': 178,'2': 100,'3': 71,'4': 62,'5': 44,'6': 42,'7': 35,'8': 39,'9': 22,'0': 0},
-    # 'Wyoming': {'1': 28,'2': 21,'3': 10,'4': 8,'5': 12,'6': 6,'7': 3,'8': 5,'9': 6,'0': 0},
-
+    """    
+    # Finally we need to rotate the data into the final format expected by highcharts.
+    Top level list -- will be 9 items long, corresponding to integers 1-9 and 0
+    within each theyll have a dict:
+    {name: 'Integer 1', data: [4, 4, 2, 4, 4, ... ]}, 
+    which is FIFTY items long
+    Ordered from Alabama to Wyoming
+    'Wisconsin': {'1': 178,'2': 100,'3': 71,'4': 62,'5': 44,'6': 42,'7': 35,'8': 39,'9': 22,'0': 0},
+    'Wyoming': {'1': 28,'2': 21,'3': 10,'4': 8,'5': 12,'6': 6,'7': 3,'8': 5,'9': 6,'0': 0},
+    """
     benfords_list = []
 
     for state in list_of_states:
-        # print(benfords_densities[state])
         temp = []
         for x in range(10):
             temp.append(benfords_densities[state][str(x)])
-        # pull the first value and stick at the end.
-        # first_to_last = temp.pop(0)
-        # temp.append(first_to_last)
         benfords_list.append(temp)
 
-
-    # [76, 52, 33, 25, 22, 27, 13, 14, 19, 0],
-    # [71, 41, 32, 20, 18, 18, 12, 9, 11, 0],
-    # [178, 100, 71, 62, 44, 42, 35, 39, 22, 0],
-    # [28, 21, 10, 8, 12, 6, 3, 5, 6, 0]]
-
-    ## Start with the Alamaba  to Wyoming dataset for each of the benfords list
+    ## Start with the Alamaba to Wyoming dataset for each of the benfords list
     # Integer zero starts with benfords_list[0] aka Alambama and ends with benfords_list[50] Wyoming
     leading_integer_sorted = [[0 for i in range(50)] for j in range(10)]
     # leading_integer_sorted[0] = [0..50]
@@ -118,6 +109,7 @@ def parse(filename):
 
     benfords_densities = {}
     malformed_count = 0
+    
     ## ~~~~ NON ALGORITHMICALLY OPTIMIZED ~~~~
     # Prototyping > Performance
     for row in preprocessed_data:
@@ -139,18 +131,6 @@ def parse(filename):
 
 
     return list_of_states, highcharts_ingest_data
-
-
-
-# parse(filename)
-
-## quick sanity check
-# benfords_densities['Alabama']
-# benfords_densities['Texas']
-# benfords_densities['Wyoming']
-
-
-
 
 
 
