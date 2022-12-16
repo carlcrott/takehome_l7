@@ -1,0 +1,7 @@
+172.26.0.1 - - [16/Dec/2022:00:39:33 +0000] "GET / HTTP/1.1" 200 824 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:33 +0000] "GET / HTTP/1.1" 200 824 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:33 +0000] "GET /static/main.css HTTP/1.1" 200 0 "http://localhost:8000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:33 +0000] "GET /static/service.js HTTP/1.1" 200 0 "http://localhost:8000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:39 +0000] "POST /uploader HTTP/1.1" 200 4291 "http://localhost:8000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:39 +0000] "GET /static/main.css HTTP/1.1" 304 0 "http://localhost:8000/uploader" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.26.0.1 - - [16/Dec/2022:00:39:39 +0000] "GET /static/service.js HTTP/1.1" 304 0 "http://localhost:8000/uploader" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
